@@ -5,7 +5,7 @@ import '../styles/EditData.css';
 class EditDataView extends React.Component {
 	render() {
 		const { data } = this.props;
-		console.log(data);
+		console.table(data);
 
 		if (!data) {
 			return <div>No data found! Upload some data first.</div>;
