@@ -11,7 +11,11 @@ class Header extends React.Component {
 					<ul>
 						<li>
 							<button
-								onClick={this.props.handleClick}
+								onClick={(e) =>
+									this.props.handleClick(
+										e.target.dataset.view
+									)
+								}
 								data-view='home'
 							>
 								Home
@@ -19,7 +23,11 @@ class Header extends React.Component {
 						</li>
 						<li>
 							<button
-								onClick={this.props.handleClick}
+								onClick={(e) =>
+									this.props.handleClick(
+										e.target.dataset.view
+									)
+								}
 								data-view='upload'
 							>
 								Upload
@@ -27,7 +35,11 @@ class Header extends React.Component {
 						</li>
 						<li>
 							<button
-								onClick={this.props.handleClick}
+								onClick={(e) =>
+									this.props.handleClick(
+										e.target.dataset.view
+									)
+								}
 								data-view='edit'
 							>
 								Edit Data
@@ -35,7 +47,11 @@ class Header extends React.Component {
 						</li>
 						<li>
 							<button
-								onClick={this.props.handleClick}
+								onClick={(e) =>
+									this.props.handleClick(
+										e.target.dataset.view
+									)
+								}
 								data-view='output'
 							>
 								View Output
@@ -43,7 +59,11 @@ class Header extends React.Component {
 						</li>
 						<li>
 							<button
-								onClick={this.props.handleClick}
+								onClick={(e) =>
+									this.props.handleClick(
+										e.target.dataset.view
+									)
+								}
 								data-view='settings'
 							>
 								Settings

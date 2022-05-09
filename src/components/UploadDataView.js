@@ -7,28 +7,35 @@ class UploadDataView extends React.Component {
 		super();
 
 		this.state = {
-			file: null,
+			uploadSuccessful: false,
+			hasError: false,
 		};
 
-		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	handleChange(e) {
-		this.setState({ [e.target.name]: e.target.files[0] });
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.setState({ uploadSuccessful: false, hasError: false });
+
 		const file = e.target[0].files[0];
 		const reader = new FileReader();
 
+		if (!file || file.name.slice(-4) !== '.csv') {
+			this.setState({ hasError: true });
+			console.error('Invalid file');
+			return;
+		}
+
 		reader.onload = (event) => {
 			const arr = CSVToArray(event.target.result);
-			this.props.changeFile(arr);
+			this.props.updateRawData(arr);
 		};
 
 		reader.readAsText(file);
+		this.setState({
+			uploadSuccessful: true,
+		});
 	};
 
 	render() {
@@ -41,9 +48,26 @@ class UploadDataView extends React.Component {
 						name='file'
 						accept='.csv'
 						onChange={this.handleChange}
+						required
 					></input>
 					<button type='submit'>Upload File</button>
 				</form>
+				{this.state.uploadSuccessful ? (
+					<div>
+						<p>Upload successful!</p>
+						<button
+							type='button'
+							onClick={() => this.props.changeView('edit')}
+						>
+							Proceed to Edit Data
+						</button>
+					</div>
+				) : null}
+				{this.state.hasError ? (
+					<div>
+						<p>Error: please select a valid .csv file</p>
+					</div>
+				) : null}
 			</div>
 		);
 	}

@@ -5,9 +5,18 @@ import EditDataView from './EditDataView';
 import OutputView from './OutputView';
 import Settings from './Settings';
 
+import '../styles/Main.css';
+
 class Main extends React.Component {
 	render() {
-		const { view, data } = this.props;
+		const {
+			view,
+			changeView,
+			rawData,
+			updateRawData,
+			processedData,
+			updateProcessedData,
+		} = this.props;
 		return (
 			<main>
 				{
@@ -15,11 +24,18 @@ class Main extends React.Component {
 						home: <Home />,
 						upload: (
 							<UploadDataView
-								changeFile={this.props.changeFile}
+								updateRawData={updateRawData}
+								changeView={changeView}
 							/>
 						),
-						edit: <EditDataView data={data} />,
-						output: <OutputView />,
+						edit: (
+							<EditDataView
+								data={rawData}
+								updateRawData={updateRawData}
+								processData={updateProcessedData}
+							/>
+						),
+						output: <OutputView data={processedData} />,
 						settings: <Settings />,
 					}[view]
 				}

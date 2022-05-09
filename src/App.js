@@ -11,33 +11,45 @@ class App extends React.Component {
 
 		this.state = {
 			currentView: 'home',
-			currentData: null,
+			rawData: null,
+			functionMapping: {},
+			processedData: null,
 		};
 
-		this.viewChange = this.viewChange.bind(this);
-		this.changeFile = this.changeFile.bind(this);
+		this.changeView = this.changeView.bind(this);
+		this.updateRawData = this.updateRawData.bind(this);
 	}
 
-	viewChange = (e) => {
+	changeView = (view) => {
 		this.setState({
-			currentView: e.target.dataset.view,
+			currentView: view,
 		});
 	};
 
-	changeFile = (data) => {
+	updateRawData = (data) => {
 		this.setState({
-			currentData: data,
+			rawData: data,
+		});
+	};
+
+	updateProcessedData = (data) => {
+		console.log(data);
+		this.setState({
+			processedData: data,
 		});
 	};
 
 	render() {
 		return (
 			<div className='App'>
-				<Header handleClick={this.viewChange} />
+				<Header handleClick={this.changeView} />
 				<Main
 					view={this.state.currentView}
-					changeFile={this.changeFile}
-					data={this.state.currentData}
+					changeView={this.changeView}
+					rawData={this.state.rawData}
+					updateRawData={this.updateRawData}
+					processedData={this.state.processedData}
+					updateProcessedData={this.updateProcessedData}
 				/>
 				<Footer />
 			</div>

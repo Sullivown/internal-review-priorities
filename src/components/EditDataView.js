@@ -1,11 +1,27 @@
 import React from 'react';
+import uniqid from 'uniqid';
 
 import '../styles/EditData.css';
 
 class EditDataView extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = null;
+	}
+
+	handleChange = (e) => {
+		const row = e.target.dataset.row;
+		const col = e.target.dataset.col;
+
+		let data = this.props.data;
+		data[row][col] = e.target.innerText;
+
+		this.props.updateRawData(data);
+	};
+
 	render() {
 		const { data } = this.props;
-		console.table(data);
 
 		if (!data) {
 			return <div>No data found! Upload some data first.</div>;
@@ -15,21 +31,45 @@ class EditDataView extends React.Component {
 
 		return (
 			<div>
+				<h1>Edit Data</h1>
+				<div>
+					<button
+						type='button'
+						onClick={() => {
+							this.props.processData('some data!');
+						}}
+					>
+						Calulate Priotities
+					</button>
+				</div>
 				<table>
 					<thead>
 						<tr>
 							{headings.map((item) => {
-								return <th>{item}</th>;
+								return <th key={uniqid()}>{item}</th>;
 							})}
 						</tr>
 					</thead>
 					<tbody>
-						{data.map((row, index) => {
-							if (index !== 0) {
+						{data.map((row, rowIndex) => {
+							if (rowIndex !== 0) {
 								return (
-									<tr>
-										{row.map((cell) => {
-											return <td>{cell}</td>;
+									<tr key={uniqid()}>
+										{row.map((cell, cellIndex) => {
+											return (
+												<td
+													key={uniqid()}
+													contentEditable='true'
+													suppressContentEditableWarning={
+														true
+													}
+													onBlur={this.handleChange}
+													data-row={rowIndex}
+													data-col={cellIndex}
+												>
+													{cell}
+												</td>
+											);
 										})}
 									</tr>
 								);
