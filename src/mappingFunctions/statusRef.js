@@ -1,4 +1,4 @@
-function stausRef(value) {
+function statusRef(value) {
 	let score = 0;
 	if (value === 'awaiting-final-proof') {
 		score = 10;
@@ -16,4 +16,4 @@ function stausRef(value) {
 	return score;
 }
 
-export default stausRef;
+export default statusRef;

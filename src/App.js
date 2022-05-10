@@ -17,11 +17,11 @@ class App extends React.Component {
 			currentView: 'home',
 			rawData: null,
 			functionMapping: {
-				id: copyValue,
-				title: copyValue,
-				writer: copyValue,
-				statusRef: statusRef,
-				isShapshot: null,
+				id: { algorithm: copyValue, weight: null },
+				title: { algorithm: copyValue, weight: null },
+				writer: { algorithm: copyValue, weight: null },
+				statusRef: { algorithm: statusRef, weight: 1 },
+				isSnapshot: { algorithm: copyValue, weight: 1 },
 			},
 			processedData: null,
 		};
@@ -57,6 +57,7 @@ class App extends React.Component {
 					rawData={this.state.rawData}
 					processedData={this.state.processedData}
 					updateProcessedData={this.updateProcessedData}
+					functionMapping={this.state.functionMapping}
 				/>
 				<Footer />
 			</div>
