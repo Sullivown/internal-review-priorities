@@ -14,9 +14,12 @@ class Settings extends React.Component {
 			return (
 				<div>
 					<h2>{item.name}</h2>
-					<textarea cols='100' rows='10' readOnly>
-						{item.toString()}
-					</textarea>
+					<textarea
+						value={item.toString()}
+						cols='100'
+						rows='10'
+						readOnly
+					></textarea>
 				</div>
 			);
 		});

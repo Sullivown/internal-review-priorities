@@ -3,7 +3,6 @@ import sortArray from './sortArray';
 
 function calculateScores(data, mappings) {
 	console.log('Calculating scores....');
-	console.log(mappings);
 	const dataCopy = _.cloneDeep(data);
 	const headings = [...dataCopy[0]];
 

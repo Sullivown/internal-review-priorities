@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/Footer.css';
 
 class Footer extends React.Component {
 	render() {
-		return <footer>This is the footer!</footer>;
+		return <footer>:D</footer>;
 	}
 }
 

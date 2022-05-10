@@ -3,6 +3,7 @@ import uniqid from 'uniqid';
 import OutputTableHeading from './OutputTableHeading';
 
 import '../styles/Output.css';
+import OutputTableCell from './OutputTableCell';
 
 class OutputView extends React.Component {
 	constructor(props) {
@@ -35,6 +36,9 @@ class OutputView extends React.Component {
 									<OutputTableHeading
 										key={uniqid()}
 										item={item}
+										functionMapping={
+											this.props.functionMapping
+										}
 										updateFunctionMapping={
 											this.props.updateFunctionMapping
 										}
@@ -48,17 +52,14 @@ class OutputView extends React.Component {
 							if (rowIndex !== 0) {
 								return (
 									<tr key={uniqid()}>
-										{row.map((cell, cellIndex) => {
-											return (
-												<td
-													key={uniqid()}
-													data-row={rowIndex}
-													data-col={cellIndex}
-												>
-													{cell}
-												</td>
-											);
-										})}
+										{row.map((cell, cellIndex) => (
+											<OutputTableCell
+												key={uniqid()}
+												cell={cell}
+												rowIndex={rowIndex}
+												cellIndex={cellIndex}
+											/>
+										))}
 									</tr>
 								);
 							} else {

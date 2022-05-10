@@ -57,17 +57,16 @@ class App extends React.Component {
 		this.setState({ processedData: processedData });
 	};
 
-	updateFunctionMapping = (data) => {
+	updateFunctionMapping = (e) => {
 		this.setState(() => ({
 			functionMapping: {
 				...this.state.functionMapping,
-				[data.key]: {
-					...this.state.functionMapping[data.key],
-					weight: parseInt(data.value),
+				[e.target.dataset.key]: {
+					...this.state.functionMapping[e.target.dataset.key],
+					weight: parseInt(e.target.value),
 				},
 			},
 		}));
-		console.log(this.state.functionMapping);
 		this.updateProcessedData();
 	};
 
