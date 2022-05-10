@@ -16,6 +16,8 @@ class Main extends React.Component {
 			processedData,
 			updateProcessedData,
 			functionMapping,
+			updateFunctionMapping,
+			sortData,
 		} = this.props;
 		return (
 			<main>
@@ -36,7 +38,14 @@ class Main extends React.Component {
 								updateProcessedData={updateProcessedData}
 							/>
 						),
-						output: <OutputView data={processedData} />,
+						output: (
+							<OutputView
+								data={processedData}
+								functionMapping={functionMapping}
+								updateFunctionMapping={updateFunctionMapping}
+								sortData={sortData}
+							/>
+						),
 						settings: (
 							<Settings functionMapping={functionMapping} />
 						),

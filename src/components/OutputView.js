@@ -1,7 +1,8 @@
 import React from 'react';
 import uniqid from 'uniqid';
+import OutputTableHeading from './OutputTableHeading';
 
-import sortArray from '../helpers/sortArray';
+import '../styles/Output.css';
 
 class OutputView extends React.Component {
 	constructor(props) {
@@ -9,32 +10,11 @@ class OutputView extends React.Component {
 
 		this.state = {
 			initialising: true,
-			sortedData: null,
-			sort: {
-				metric: 'total',
-				desc: true,
-			},
 		};
 	}
 
-	sortData = () => {
-		if (!this.props.data) {
-			return false;
-		}
-		const sorted = sortArray(
-			this.props.data,
-			this.state.sort.metric,
-			this.state.sort.desc
-		);
-		this.setState({ sortedData: sorted });
-	};
-
-	componentDidMount() {
-		this.sortData();
-	}
-
 	render() {
-		const data = this.state.sortedData;
+		const { data } = this.props;
 
 		if (!data) {
 			return (
@@ -51,7 +31,15 @@ class OutputView extends React.Component {
 					<thead>
 						<tr>
 							{headings.map((item) => {
-								return <th key={uniqid()}>{item}</th>;
+								return (
+									<OutputTableHeading
+										key={uniqid()}
+										item={item}
+										updateFunctionMapping={
+											this.props.updateFunctionMapping
+										}
+									/>
+								);
 							})}
 						</tr>
 					</thead>

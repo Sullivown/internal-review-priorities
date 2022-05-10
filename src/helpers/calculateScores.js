@@ -1,8 +1,9 @@
 import _ from 'lodash';
+import sortArray from './sortArray';
 
 function calculateScores(data, mappings) {
 	console.log('Calculating scores....');
-
+	console.log(mappings);
 	const dataCopy = _.cloneDeep(data);
 	const headings = [...dataCopy[0]];
 
@@ -25,6 +26,9 @@ function calculateScores(data, mappings) {
 			let output;
 			if (metricFunction) {
 				output = metricFunction(dataCopy[i][j]);
+				if (Number.isInteger(output)) {
+					output *= mappings[currentCol].weight;
+				}
 			} else {
 				output = '-';
 			}
@@ -45,7 +49,9 @@ function calculateScores(data, mappings) {
 		processedData.push(temp);
 	}
 
-	return processedData;
+	const sortedData = sortArray(processedData);
+
+	return sortedData;
 }
 
 export default calculateScores;
