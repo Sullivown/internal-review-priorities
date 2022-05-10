@@ -26,20 +26,13 @@ class App extends React.Component {
 			processedData: null,
 		};
 
-		this.changeView = this.changeView.bind(this);
-		this.updateRawData = this.updateRawData.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 		this.updateProcessedData = this.updateProcessedData.bind(this);
 	}
 
-	changeView = (view) => {
+	handleChange = (key, value) => {
 		this.setState({
-			currentView: view,
-		});
-	};
-
-	updateRawData = (data) => {
-		this.setState({
-			rawData: data,
+			[key]: value,
 		});
 	};
 
@@ -54,12 +47,14 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className='App'>
-				<Header handleClick={this.changeView} />
+				<Header
+					currentView={this.state.currentView}
+					handleClick={this.handleChange}
+				/>
 				<Main
 					view={this.state.currentView}
-					changeView={this.changeView}
+					handleChange={this.handleChange}
 					rawData={this.state.rawData}
-					updateRawData={this.updateRawData}
 					processedData={this.state.processedData}
 					updateProcessedData={this.updateProcessedData}
 				/>

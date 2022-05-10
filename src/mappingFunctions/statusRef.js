@@ -9,7 +9,7 @@ function stausRef(value) {
 	if (value === 'ready-to-go-live') {
 		score = 1;
 	}
-	if (value === 'rstarted') {
+	if (value === 'started') {
 		score = 3;
 	}
 

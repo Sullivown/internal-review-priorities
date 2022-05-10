@@ -11,7 +11,7 @@ function calculateScores(data, mappings) {
 	let processedData = [];
 	processedData.push(headings);
 
-	for (let i = 1; i < dataCopy.length; i++) {
+	for (let i = 0; i < dataCopy.length; i++) {
 		// Calculate score for individual rows
 		let temp = [];
 		for (let j = 0; j < dataCopy[i].length; j++) {
@@ -21,7 +21,7 @@ function calculateScores(data, mappings) {
 			if (metricFunction) {
 				output = metricFunction(dataCopy[i][j]);
 			} else {
-				output = null;
+				output = '-';
 			}
 
 			temp.push(output);

@@ -7,7 +7,7 @@ class EditDataView extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = null;
+		this.state = { processClicked: false };
 	}
 
 	handleChange = (e) => {
@@ -37,6 +37,7 @@ class EditDataView extends React.Component {
 						type='button'
 						onClick={() => {
 							this.props.updateProcessedData();
+							this.props.handleChange('currentView', 'output');
 						}}
 					>
 						Calulate Priotities

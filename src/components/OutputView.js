@@ -1,16 +1,40 @@
 import React from 'react';
 import uniqid from 'uniqid';
 
+import sortArray from '../helpers/sortArray';
+
 class OutputView extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			initialising: true,
+			sortedData: null,
+			sort: {
+				metric: 'total',
+				desc: true,
+			},
 		};
 	}
+
+	sortData = () => {
+		if (!this.props.data) {
+			return false;
+		}
+		const sorted = sortArray(
+			this.props.data,
+			this.state.sort.metric,
+			this.state.sort.desc
+		);
+		this.setState({ sortedData: sorted });
+	};
+
+	componentDidMount() {
+		this.sortData();
+	}
+
 	render() {
-		const { data } = this.props;
+		const data = this.state.sortedData;
 
 		if (!data) {
 			return (
@@ -40,11 +64,6 @@ class OutputView extends React.Component {
 											return (
 												<td
 													key={uniqid()}
-													contentEditable='true'
-													suppressContentEditableWarning={
-														true
-													}
-													onBlur={this.handleChange}
 													data-row={rowIndex}
 													data-col={cellIndex}
 												>

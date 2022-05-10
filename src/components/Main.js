@@ -11,9 +11,8 @@ class Main extends React.Component {
 	render() {
 		const {
 			view,
-			changeView,
 			rawData,
-			updateRawData,
+			handleChange,
 			processedData,
 			updateProcessedData,
 		} = this.props;
@@ -24,14 +23,15 @@ class Main extends React.Component {
 						home: <Home />,
 						upload: (
 							<UploadDataView
-								updateRawData={updateRawData}
-								changeView={changeView}
+								updateRawData={handleChange}
+								changeView={handleChange}
 							/>
 						),
 						edit: (
 							<EditDataView
 								data={rawData}
-								updateRawData={updateRawData}
+								updateRawData={handleChange}
+								handleChange={handleChange}
 								updateProcessedData={updateProcessedData}
 							/>
 						),

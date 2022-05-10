@@ -20,3 +20,7 @@ ul {
 li {
 	list-style-type: none;
 }
+
+.selected {
+	background-color: red;
+}

@@ -29,7 +29,7 @@ class UploadDataView extends React.Component {
 
 		reader.onload = (event) => {
 			const arr = CSVToArray(event.target.result);
-			this.props.updateRawData(arr);
+			this.props.updateRawData('rawData', arr);
 		};
 
 		reader.readAsText(file);
@@ -41,6 +41,7 @@ class UploadDataView extends React.Component {
 	render() {
 		return (
 			<div>
+				<h1>Upload Data</h1>
 				<form onSubmit={this.handleSubmit}>
 					<input
 						type='file'
@@ -57,7 +58,9 @@ class UploadDataView extends React.Component {
 						<p>Upload successful!</p>
 						<button
 							type='button'
-							onClick={() => this.props.changeView('edit')}
+							onClick={() =>
+								this.props.changeView('currentView', 'edit')
+							}
 						>
 							Proceed to Edit Data
 						</button>

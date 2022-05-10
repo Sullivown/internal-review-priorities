@@ -1,73 +1,51 @@
 import React from 'react';
+import NavButton from './NavButton';
 
 import '../styles/Header.css';
 
 class Header extends React.Component {
 	render() {
+		const { currentView, handleClick } = this.props;
+
 		return (
 			<header>
 				<h1>Internal Review Priorities</h1>
 				<nav>
 					<ul>
 						<li>
-							<button
-								onClick={(e) =>
-									this.props.handleClick(
-										e.target.dataset.view
-									)
-								}
-								data-view='home'
-							>
-								Home
-							</button>
+							<NavButton
+								page='Home'
+								currentView={currentView}
+								handleClick={handleClick}
+							/>
 						</li>
 						<li>
-							<button
-								onClick={(e) =>
-									this.props.handleClick(
-										e.target.dataset.view
-									)
-								}
-								data-view='upload'
-							>
-								Upload
-							</button>
+							<NavButton
+								page='Upload'
+								currentView={currentView}
+								handleClick={handleClick}
+							/>
 						</li>
 						<li>
-							<button
-								onClick={(e) =>
-									this.props.handleClick(
-										e.target.dataset.view
-									)
-								}
-								data-view='edit'
-							>
-								Edit Data
-							</button>
+							<NavButton
+								page='Edit'
+								currentView={currentView}
+								handleClick={handleClick}
+							/>
 						</li>
 						<li>
-							<button
-								onClick={(e) =>
-									this.props.handleClick(
-										e.target.dataset.view
-									)
-								}
-								data-view='output'
-							>
-								View Output
-							</button>
+							<NavButton
+								page='Output'
+								currentView={currentView}
+								handleClick={handleClick}
+							/>
 						</li>
 						<li>
-							<button
-								onClick={(e) =>
-									this.props.handleClick(
-										e.target.dataset.view
-									)
-								}
-								data-view='settings'
-							>
-								Settings
-							</button>
+							<NavButton
+								page='Settings'
+								currentView={currentView}
+								handleClick={handleClick}
+							/>
 						</li>
 					</ul>
 				</nav>
