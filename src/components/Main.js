@@ -32,7 +32,7 @@ class Main extends React.Component {
 							<EditDataView
 								data={rawData}
 								updateRawData={updateRawData}
-								processData={updateProcessedData}
+								updateProcessedData={updateProcessedData}
 							/>
 						),
 						output: <OutputView data={processedData} />,

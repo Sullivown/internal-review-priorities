@@ -36,7 +36,7 @@ class EditDataView extends React.Component {
 					<button
 						type='button'
 						onClick={() => {
-							this.props.processData('some data!');
+							this.props.updateProcessedData();
 						}}
 					>
 						Calulate Priotities
