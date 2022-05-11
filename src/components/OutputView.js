@@ -10,9 +10,14 @@ class OutputView extends React.Component {
 		super(props);
 
 		this.state = {
-			initialising: true,
+			editableFocus: null,
 		};
+		this.setEditableFocus = this.setEditableFocus.bind(this);
 	}
+
+	setEditableFocus = (fieldId) => {
+		this.setState({ editableFocus: fieldId });
+	};
 
 	render() {
 		const { data } = this.props;
@@ -24,49 +29,46 @@ class OutputView extends React.Component {
 		}
 
 		const headings = data[0];
+		const headingsArr = headings.map((item) => {
+			return (
+				<OutputTableHeading
+					key={uniqid()}
+					item={item}
+					functionMapping={this.props.functionMapping}
+					updateFunctionMapping={this.props.updateFunctionMapping}
+					editableFocus={this.state.editableFocus}
+					setEditableFocus={this.setEditableFocus}
+				/>
+			);
+		});
+
+		const bodyArr = data.map((row, rowIndex) => {
+			if (rowIndex !== 0) {
+				return (
+					<tr key={uniqid()}>
+						{row.map((cell, cellIndex) => (
+							<OutputTableCell
+								key={uniqid()}
+								cell={cell}
+								rowIndex={rowIndex}
+								cellIndex={cellIndex}
+							/>
+						))}
+					</tr>
+				);
+			} else {
+				return null;
+			}
+		});
 
 		return (
 			<div>
 				<h1>Output</h1>
-				<table>
-					<thead>
-						<tr>
-							{headings.map((item) => {
-								return (
-									<OutputTableHeading
-										key={uniqid()}
-										item={item}
-										functionMapping={
-											this.props.functionMapping
-										}
-										updateFunctionMapping={
-											this.props.updateFunctionMapping
-										}
-									/>
-								);
-							})}
-						</tr>
+				<table key={uniqid()}>
+					<thead key={uniqid()}>
+						<tr key={uniqid()}>{headingsArr}</tr>
 					</thead>
-					<tbody>
-						{data.map((row, rowIndex) => {
-							if (rowIndex !== 0) {
-								return (
-									<tr key={uniqid()}>
-										{row.map((cell, cellIndex) => (
-											<OutputTableCell
-												key={uniqid()}
-												cell={cell}
-												rowIndex={rowIndex}
-												cellIndex={cellIndex}
-											/>
-										))}
-									</tr>
-								);
-							} else {
-								return null;
-							}
-						})}
-					</tbody>
+					<tbody>{bodyArr}</tbody>
 				</table>
 			</div>
 		);
