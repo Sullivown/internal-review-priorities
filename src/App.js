@@ -1,4 +1,7 @@
 import React from 'react';
+
+import LocalStorage from './helpers/localStorage';
+
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
@@ -21,7 +24,9 @@ class App extends React.Component {
 
 		this.state = {
 			currentView: 'home',
+			fileName: null,
 			rawData: null,
+			processedData: null,
 			functionMapping: {
 				id: { algorithm: copyValue, weight: null },
 				title: { algorithm: copyValue, weight: null },
@@ -29,7 +34,6 @@ class App extends React.Component {
 				statusRef: { algorithm: statusRef, weight: 2 },
 				isSnapshot: { algorithm: copyValue, weight: 1 },
 			},
-			processedData: null,
 			sort: {
 				metric: 'total',
 				desc: true,
@@ -42,10 +46,25 @@ class App extends React.Component {
 		this.sortData = this.sortData.bind(this);
 	}
 
+	componentDidMount() {
+		const localData = LocalStorage.initialise();
+		this.setState(localData);
+	}
+
 	componentDidUpdate(prevProps, prevState) {
 		if (this.state.functionMapping !== prevState.functionMapping) {
 			this.updateProcessedData();
 		}
+
+		if (this.state.rawData !== prevState.rawData) {
+			this.setState({ fileName: this.state.fileName });
+		}
+
+		LocalStorage.update({
+			fileName: this.state.fileName,
+			rawData: this.state.rawData,
+			processedData: this.state.processedData,
+		});
 	}
 
 	handleChange = (key, value) => {
@@ -104,6 +123,7 @@ class App extends React.Component {
 					updateFunctionMapping={this.updateFunctionMapping}
 					sortData={this.sortData}
 					scoringFunctions={scoringFunctions}
+					fileName={this.state.fileName}
 				/>
 				<Footer />
 			</div>

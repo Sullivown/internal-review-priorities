@@ -2,6 +2,8 @@ import React from 'react';
 
 import CSVToArray from '../helpers/CSVToArray';
 
+import '../styles/Upload.css';
+
 class UploadDataView extends React.Component {
 	constructor() {
 		super();
@@ -29,7 +31,8 @@ class UploadDataView extends React.Component {
 
 		reader.onload = (event) => {
 			const arr = CSVToArray(event.target.result);
-			this.props.updateRawData('rawData', arr);
+			this.props.handleChange('rawData', arr);
+			this.props.handleChange('fileName', file.name);
 		};
 
 		reader.readAsText(file);
@@ -42,35 +45,53 @@ class UploadDataView extends React.Component {
 		return (
 			<div>
 				<h1>Upload Data</h1>
-				<form onSubmit={this.handleSubmit}>
-					<input
-						type='file'
-						id='file'
-						name='file'
-						accept='.csv'
-						onChange={this.handleChange}
-						required
-					></input>
-					<button type='submit'>Upload File</button>
-				</form>
-				{this.state.uploadSuccessful ? (
-					<div>
-						<p>Upload successful!</p>
-						<button
-							type='button'
-							onClick={() =>
-								this.props.changeView('currentView', 'edit')
-							}
-						>
-							Proceed to Edit Data
-						</button>
-					</div>
-				) : null}
-				{this.state.hasError ? (
-					<div>
-						<p>Error: please select a valid .csv file</p>
-					</div>
-				) : null}
+				<div>
+					<p>
+						Note that data is only stored in localStorage and should
+						persist between sessions.
+					</p>
+					<p>
+						Uploading a new file will overwrite any existing data,
+						so use with caution!
+					</p>
+				</div>
+				<div className='uploader'>
+					<h3 className='current'>Current File:</h3>
+					<p>{this.props.fileName || 'None.'}</p>
+					<h3>Upload a new file:</h3>
+					<form onSubmit={this.handleSubmit}>
+						<input
+							type='file'
+							id='file'
+							name='file'
+							accept='.csv'
+							onChange={this.handleChange}
+							required
+						></input>
+						<button type='submit'>Upload File</button>
+					</form>
+					{this.state.uploadSuccessful ? (
+						<div className='upload-message success'>
+							<p>Upload successful!</p>
+							<button
+								type='button'
+								onClick={() =>
+									this.props.handleChange(
+										'currentView',
+										'edit'
+									)
+								}
+							>
+								Proceed to Edit Data
+							</button>
+						</div>
+					) : null}
+					{this.state.hasError ? (
+						<div className='upload-message error'>
+							<p>Error: please select a valid .csv file</p>
+						</div>
+					) : null}
+				</div>
 			</div>
 		);
 	}

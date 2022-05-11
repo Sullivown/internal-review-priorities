@@ -1,0 +1,28 @@
+.uploader {
+	padding: 15px;
+	border-radius: 5px;
+	background-color: lightblue;
+}
+
+h3,
+p {
+	margin-block: 0px;
+}
+
+p {
+	margin-bottom: 15px;
+}
+
+.upload-message {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+.success {
+	color: green;
+}
+
+.error {
+	color: red;
+}

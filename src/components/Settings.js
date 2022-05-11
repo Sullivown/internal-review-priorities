@@ -1,4 +1,7 @@
 import React from 'react';
+
+import uniqid from 'uniqid';
+
 import '../styles/Settings.css';
 
 class Settings extends React.Component {
@@ -11,7 +14,7 @@ class Settings extends React.Component {
 
 		const funcMapArrMapped = funcArr.map((item) => {
 			return (
-				<div>
+				<div key={uniqid()}>
 					<h2>{item.name}</h2>
 					<textarea
 						value={item.toString()}

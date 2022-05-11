@@ -30,7 +30,7 @@ class OutputView extends React.Component {
 		const bodyArr = data.map((row, rowIndex) => {
 			if (rowIndex !== 0) {
 				return (
-					<tr>
+					<tr key={uniqid()}>
 						{row.map((cell, cellIndex) => (
 							<OutputTableCell
 								key={uniqid()}

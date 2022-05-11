@@ -19,6 +19,7 @@ class Main extends React.Component {
 			updateFunctionMapping,
 			sortData,
 			scoringFunctions,
+			fileName,
 		} = this.props;
 		return (
 			<main>
@@ -27,8 +28,8 @@ class Main extends React.Component {
 						home: <Home />,
 						upload: (
 							<UploadDataView
-								updateRawData={handleChange}
-								changeView={handleChange}
+								handleChange={handleChange}
+								fileName={fileName}
 							/>
 						),
 						edit: (
