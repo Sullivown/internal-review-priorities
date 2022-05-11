@@ -1,15 +1,9 @@
 import React from 'react';
 import uniqid from 'uniqid';
 
+import OutputInputField from './OutputInputField';
+
 class OutputTableHeading extends React.Component {
-	getWeight = () => {
-		const weight = this.props.functionMapping[this.props.item]
-			? this.props.functionMapping[this.props.item].weight
-			: 0;
-
-		return weight;
-	};
-
 	render() {
 		return (
 			<th>
@@ -19,25 +13,13 @@ class OutputTableHeading extends React.Component {
 				this.props.item !== 'writer' ? (
 					<div className='weight-div'>
 						<hr />
-						<label htmlFor={'weight-' + this.props.item}>
-							weight:{' '}
-						</label>
-						<input
+						<OutputInputField
 							key={uniqid()}
-							id={'weight-' + this.props.item}
-							type='number'
-							value={this.getWeight()}
-							data-key={this.props.item}
-							autoFocus={
-								this.props.editableFocus ===
-								'weight-' + this.props.item
-									? 'autofocus'
-									: ''
+							item={this.props.item}
+							functionMapping={this.props.functionMapping}
+							updateFunctionMapping={
+								this.props.updateFunctionMapping
 							}
-							onChange={(e) => {
-								this.props.setEditableFocus(e.target.id);
-								this.props.updateFunctionMapping(e);
-							}}
 						/>
 					</div>
 				) : null}

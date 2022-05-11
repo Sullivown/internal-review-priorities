@@ -63,7 +63,7 @@ class App extends React.Component {
 				...this.state.functionMapping,
 				[e.target.dataset.key]: {
 					...this.state.functionMapping[e.target.dataset.key],
-					weight: parseInt(e.target.value),
+					weight: parseFloat(e.target.value),
 				},
 			},
 		}));
@@ -85,6 +85,7 @@ class App extends React.Component {
 				<Header
 					currentView={this.state.currentView}
 					handleClick={this.handleChange}
+					updateProcessedData={this.updateProcessedData}
 				/>
 				<Main
 					view={this.state.currentView}

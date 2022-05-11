@@ -38,6 +38,9 @@ class Header extends React.Component {
 								page='Output'
 								currentView={currentView}
 								handleClick={handleClick}
+								updateProcessedData={
+									this.props.updateProcessedData
+								}
 							/>
 						</li>
 						<li>

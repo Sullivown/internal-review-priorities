@@ -5,3 +5,11 @@
 .weight-div input {
 	width: 50px;
 }
+
+th {
+	padding: 15px;
+}
+
+label {
+	font-size: 0.8rem;
+}

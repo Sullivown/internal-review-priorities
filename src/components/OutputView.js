@@ -6,19 +6,6 @@ import '../styles/Output.css';
 import OutputTableCell from './OutputTableCell';
 
 class OutputView extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			editableFocus: null,
-		};
-		this.setEditableFocus = this.setEditableFocus.bind(this);
-	}
-
-	setEditableFocus = (fieldId) => {
-		this.setState({ editableFocus: fieldId });
-	};
-
 	render() {
 		const { data } = this.props;
 
@@ -36,8 +23,6 @@ class OutputView extends React.Component {
 					item={item}
 					functionMapping={this.props.functionMapping}
 					updateFunctionMapping={this.props.updateFunctionMapping}
-					editableFocus={this.state.editableFocus}
-					setEditableFocus={this.setEditableFocus}
 				/>
 			);
 		});
