@@ -1,14 +1,13 @@
 import React from 'react';
-import copyValue from '../mappingFunctions/copyValue';
-import statusRef from '../mappingFunctions/statusRef';
-
 import '../styles/Settings.css';
 
 class Settings extends React.Component {
 	render() {
 		const funcArr = [];
 
-		funcArr.push(copyValue, statusRef);
+		for (let scoringFunction in this.props.scoringFunctions) {
+			funcArr.push(this.props.scoringFunctions[scoringFunction]);
+		}
 
 		const funcMapArrMapped = funcArr.map((item) => {
 			return (

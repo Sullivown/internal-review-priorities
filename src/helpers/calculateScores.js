@@ -17,15 +17,18 @@ function calculateScores(data, mappings) {
 		let temp = [];
 		for (let j = 0; j < dataCopy[i].length; j++) {
 			const currentCol = headings[j];
+			let metricFunction;
 
-			const metricFunction = mappings[currentCol].algorithm
-				? mappings[currentCol].algorithm
-				: null;
+			if (mappings[currentCol]) {
+				metricFunction = mappings[currentCol].algorithm
+					? mappings[currentCol].algorithm
+					: null;
+			}
 
 			let output;
 			if (metricFunction) {
 				output = metricFunction(dataCopy[i][j]);
-				if (Number.isInteger(output)) {
+				if (output !== null && !isNaN(output)) {
 					output *= mappings[currentCol].weight;
 				}
 			} else {
@@ -37,8 +40,8 @@ function calculateScores(data, mappings) {
 
 		// Total all scores for a given row
 		const totalScore = temp.reduce((total, item) => {
-			if (mappings[item] !== null && Number.isInteger(item)) {
-				return total + item;
+			if (mappings[item] !== null && !isNaN(item)) {
+				return total + parseFloat(item);
 			}
 			return total;
 		}, 0);

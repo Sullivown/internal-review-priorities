@@ -33,7 +33,6 @@ class OutputInputField extends React.Component {
 					}}
 					onKeyUp={(e) => {
 						if (e.key === 'Enter') {
-							console.log('enterpressed');
 							this.props.updateFunctionMapping(e);
 						}
 					}}

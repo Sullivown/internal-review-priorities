@@ -11,7 +11,7 @@ class OutputTableHeading extends React.Component {
 				{this.props.item !== 'title' &&
 				this.props.item !== 'total' &&
 				this.props.item !== 'writer' ? (
-					<div className='weight-div'>
+					<div className='table-header-div'>
 						<hr />
 						<OutputInputField
 							key={uniqid()}

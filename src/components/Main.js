@@ -18,6 +18,7 @@ class Main extends React.Component {
 			functionMapping,
 			updateFunctionMapping,
 			sortData,
+			scoringFunctions,
 		} = this.props;
 		return (
 			<main>
@@ -47,7 +48,7 @@ class Main extends React.Component {
 							/>
 						),
 						settings: (
-							<Settings functionMapping={functionMapping} />
+							<Settings scoringFunctions={scoringFunctions} />
 						),
 					}[view]
 				}

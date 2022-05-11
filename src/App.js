@@ -10,6 +10,11 @@ import copyValue from './mappingFunctions/copyValue';
 
 import './styles/App.css';
 
+const scoringFunctions = {
+	statusRef,
+	copyValue,
+};
+
 class App extends React.Component {
 	constructor() {
 		super();
@@ -50,6 +55,9 @@ class App extends React.Component {
 	};
 
 	updateProcessedData = () => {
+		if (!this.state.rawData) {
+			return;
+		}
 		const processedData = calculateScores(
 			this.state.rawData,
 			this.state.functionMapping
@@ -67,7 +75,6 @@ class App extends React.Component {
 				},
 			},
 		}));
-		this.updateProcessedData();
 	};
 
 	sortData = () => {
@@ -96,6 +103,7 @@ class App extends React.Component {
 					functionMapping={this.state.functionMapping}
 					updateFunctionMapping={this.updateFunctionMapping}
 					sortData={this.sortData}
+					scoringFunctions={scoringFunctions}
 				/>
 				<Footer />
 			</div>
