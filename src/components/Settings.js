@@ -3,26 +3,28 @@ import React from 'react';
 import uniqid from 'uniqid';
 
 import '../styles/Settings.css';
+import FunctionEditor from './functionEditor';
 
 class Settings extends React.Component {
 	render() {
 		const funcArr = [];
 
-		for (let scoringFunction in this.props.scoringFunctions) {
-			funcArr.push(this.props.scoringFunctions[scoringFunction]);
+		for (let scoringFunction in this.props.functionMapping) {
+			if (scoringFunction !== 'totalWeight') {
+				funcArr.push({
+					name: scoringFunction,
+					details: this.props.functionMapping[scoringFunction],
+				});
+			}
 		}
 
 		const funcMapArrMapped = funcArr.map((item) => {
 			return (
-				<div key={uniqid()}>
-					<h2>{item.name}</h2>
-					<textarea
-						value={item.toString()}
-						cols='100'
-						rows='10'
-						readOnly
-					></textarea>
-				</div>
+				<FunctionEditor
+					key={uniqid()}
+					item={item}
+					updateFunctionMapping={this.props.updateFunctionMapping}
+				/>
 			);
 		});
 

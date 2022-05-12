@@ -47,8 +47,8 @@ class UploadDataView extends React.Component {
 				<h1>Upload Data</h1>
 				<div>
 					<p>
-						Note that data is only stored in localStorage and should
-						persist between sessions.
+						Note that data is only stored in localStorage (nowhere
+						online) and should persist between sessions.
 					</p>
 					<p>
 						Uploading a new file will overwrite any existing data,

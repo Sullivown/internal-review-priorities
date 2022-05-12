@@ -8,9 +8,7 @@ class OutputTableHeading extends React.Component {
 		return (
 			<th>
 				<div>{this.props.item}</div>
-				{this.props.item !== 'title' &&
-				this.props.item !== 'total' &&
-				this.props.item !== 'writer' ? (
+				{this.props.item !== 'title' && this.props.item !== 'writer' ? (
 					<div className='table-header-div'>
 						<hr />
 						<OutputInputField

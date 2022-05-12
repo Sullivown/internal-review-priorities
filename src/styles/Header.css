@@ -25,3 +25,7 @@ li {
 	background-color: white;
 	color: rgb(0, 160, 160);
 }
+
+header button:hover {
+	transform: scale(1.1);
+}

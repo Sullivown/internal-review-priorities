@@ -49,7 +49,10 @@ class Main extends React.Component {
 							/>
 						),
 						settings: (
-							<Settings scoringFunctions={scoringFunctions} />
+							<Settings
+								functionMapping={functionMapping}
+								updateFunctionMapping={updateFunctionMapping}
+							/>
 						),
 					}[view]
 				}

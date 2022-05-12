@@ -40,7 +40,7 @@ class EditDataView extends React.Component {
 							this.props.handleChange('currentView', 'output');
 						}}
 					>
-						Calulate Priotities
+						Calulate Priorities
 					</button>
 				</div>
 				<table>

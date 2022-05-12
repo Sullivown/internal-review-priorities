@@ -1,5 +1,5 @@
-function copyValue(data) {
-	return data;
+function copyValue(value) {
+	return value;
 }
 
 export default copyValue;

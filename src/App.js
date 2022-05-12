@@ -7,16 +7,12 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import calculateScores from './helpers/calculateScores';
 import sortArray from './helpers/sortArray';
+import totalWeights from './helpers/totalWeights';
 
 import statusRef from './mappingFunctions/statusRef';
 import copyValue from './mappingFunctions/copyValue';
 
 import './styles/App.css';
-
-const scoringFunctions = {
-	statusRef,
-	copyValue,
-};
 
 class App extends React.Component {
 	constructor() {
@@ -28,11 +24,29 @@ class App extends React.Component {
 			rawData: null,
 			processedData: null,
 			functionMapping: {
-				id: { algorithm: copyValue, weight: null },
-				title: { algorithm: copyValue, weight: null },
-				writer: { algorithm: copyValue, weight: null },
-				statusRef: { algorithm: statusRef, weight: 2 },
-				isSnapshot: { algorithm: copyValue, weight: 1 },
+				id: { algorithm: `return value;`, weight: null },
+				title: { algorithm: `return value;`, weight: null },
+				writer: { algorithm: `return value;`, weight: null },
+				statusRef: {
+					algorithm: `let score = 0;
+				if (value === 'awaiting-final-proof') {
+					score = 10;
+				}
+				if (value === 'ready-for-internal-review') {
+					score = 5;
+				}
+				if (value === 'ready-to-go-live') {
+					score = 1;
+				}
+				if (value === 'started') {
+					score = 3;
+				}
+			
+				return score;`,
+					weight: 2,
+				},
+				isSnapshot: { algorithm: `return value;`, weight: 1 },
+				totalWeight: 3,
 			},
 			sort: {
 				metric: 'total',
@@ -47,6 +61,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
+		document.title = 'Internal Review Priorities';
 		const localData = LocalStorage.initialise();
 		this.setState(localData);
 	}
@@ -64,6 +79,7 @@ class App extends React.Component {
 			fileName: this.state.fileName,
 			rawData: this.state.rawData,
 			processedData: this.state.processedData,
+			functionMapping: this.state.functionMapping,
 		});
 	}
 
@@ -84,16 +100,27 @@ class App extends React.Component {
 		this.setState({ processedData: processedData });
 	};
 
-	updateFunctionMapping = (e) => {
-		this.setState(() => ({
-			functionMapping: {
-				...this.state.functionMapping,
-				[e.target.dataset.key]: {
-					...this.state.functionMapping[e.target.dataset.key],
-					weight: parseFloat(e.target.value),
+	updateFunctionMapping = (category, field, value) => {
+		this.setState(
+			{
+				functionMapping: {
+					...this.state.functionMapping,
+					[category]: {
+						...this.state.functionMapping[category],
+						[field]: value,
+					},
 				},
 			},
-		}));
+			() => {
+				const total = totalWeights(this.state.functionMapping);
+				this.setState({
+					functionMapping: {
+						...this.state.functionMapping,
+						totalWeight: total,
+					},
+				});
+			}
+		);
 	};
 
 	sortData = () => {
@@ -122,7 +149,6 @@ class App extends React.Component {
 					functionMapping={this.state.functionMapping}
 					updateFunctionMapping={this.updateFunctionMapping}
 					sortData={this.sortData}
-					scoringFunctions={scoringFunctions}
 					fileName={this.state.fileName}
 				/>
 				<Footer />

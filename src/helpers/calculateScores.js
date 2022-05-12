@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import sortArray from './sortArray';
+import convertToFunction from './convertToFunction';
 
 function calculateScores(data, mappings) {
 	console.log('Calculating scores....');
@@ -27,9 +28,11 @@ function calculateScores(data, mappings) {
 
 			let output;
 			if (metricFunction) {
-				output = metricFunction(dataCopy[i][j]);
+				const func = convertToFunction(metricFunction);
+				output = func(dataCopy[i][j]);
 				if (output !== null && !isNaN(output)) {
 					output *= mappings[currentCol].weight;
+					output = parseFloat(output.toFixed(3));
 				}
 			} else {
 				output = '-';
@@ -43,7 +46,7 @@ function calculateScores(data, mappings) {
 			if (mappings[item] !== null && !isNaN(item)) {
 				return total + parseFloat(item);
 			}
-			return total;
+			return parseFloat(total.toFixed(3));
 		}, 0);
 
 		temp.push(totalScore);

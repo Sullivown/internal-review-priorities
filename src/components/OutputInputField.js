@@ -21,22 +21,35 @@ class OutputInputField extends React.Component {
 		return (
 			<React.Fragment>
 				<label htmlFor={'weight-' + this.props.item}>weight: </label>
-				<input
-					id={'weight-' + this.props.item}
-					value={this.state.weight}
-					data-key={this.props.item}
-					onChange={(e) => {
-						this.setState({ weight: e.target.value });
-					}}
-					onBlur={(e) => {
-						this.props.updateFunctionMapping(e);
-					}}
-					onKeyUp={(e) => {
-						if (e.key === 'Enter') {
-							this.props.updateFunctionMapping(e);
-						}
-					}}
-				/>
+				{this.props.item === 'total' ? (
+					<div>{this.props.functionMapping.totalWeight}</div>
+				) : (
+					<input
+						id={'weight-' + this.props.item}
+						value={this.state.weight}
+						data-category={this.props.item}
+						data-field='weight'
+						onChange={(e) => {
+							this.setState({ weight: e.target.value });
+						}}
+						onBlur={(e) => {
+							this.props.updateFunctionMapping(
+								e.target.dataset.category,
+								e.target.dataset.field,
+								e.target.value
+							);
+						}}
+						onKeyUp={(e) => {
+							if (e.key === 'Enter') {
+								this.props.updateFunctionMapping(
+									e.target.dataset.category,
+									e.target.dataset.field,
+									e.target.value
+								);
+							}
+						}}
+					/>
+				)}
 			</React.Fragment>
 		);
 	}
