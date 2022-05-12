@@ -18,7 +18,6 @@ class Main extends React.Component {
 			functionMapping,
 			updateFunctionMapping,
 			sortData,
-			scoringFunctions,
 			fileName,
 		} = this.props;
 		return (

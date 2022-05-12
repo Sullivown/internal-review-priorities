@@ -9,9 +9,6 @@ import calculateScores from './helpers/calculateScores';
 import sortArray from './helpers/sortArray';
 import totalWeights from './helpers/totalWeights';
 
-import statusRef from './mappingFunctions/statusRef';
-import copyValue from './mappingFunctions/copyValue';
-
 import './styles/App.css';
 
 class App extends React.Component {

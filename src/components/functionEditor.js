@@ -1,6 +1,5 @@
 import React from 'react';
-
-import convertToFunction from '../helpers/convertToFunction';
+import FunctionTemplates from '../mappingFunctions/functionTemplates';
 
 class FunctionEditor extends React.Component {
 	constructor(props) {
@@ -14,8 +13,7 @@ class FunctionEditor extends React.Component {
 	}
 
 	componentDidMount() {
-		const content = this.props.item.details.algorithm;
-		console.log(content);
+		const content = this.props.item.details;
 		this.setState({ textArea: content });
 	}
 
@@ -38,11 +36,11 @@ class FunctionEditor extends React.Component {
 				></textarea>
 				<button
 					onClick={() => {
-						this.props.updateFunctionMapping(
-							this.props.item.name,
-							'algorithm',
-							this.state.textArea
-						);
+						FunctionTemplates.update({
+							key: this.props.item.name,
+							value: this.state.textArea,
+						});
+						console.log(FunctionTemplates.templates);
 					}}
 				>
 					Save

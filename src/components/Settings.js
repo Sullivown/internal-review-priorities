@@ -1,19 +1,20 @@
 import React from 'react';
-
 import uniqid from 'uniqid';
 
-import '../styles/Settings.css';
 import FunctionEditor from './functionEditor';
+import FunctionTemplates from '../mappingFunctions/functionTemplates';
+
+import '../styles/Settings.css';
 
 class Settings extends React.Component {
 	render() {
 		const funcArr = [];
 
-		for (let scoringFunction in this.props.functionMapping) {
+		for (let scoringFunction in FunctionTemplates.templates) {
 			if (scoringFunction !== 'totalWeight') {
 				funcArr.push({
 					name: scoringFunction,
-					details: this.props.functionMapping[scoringFunction],
+					details: FunctionTemplates.templates[scoringFunction],
 				});
 			}
 		}
