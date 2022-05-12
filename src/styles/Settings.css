@@ -3,3 +3,42 @@ div {
 	flex-direction: column;
 	gap: 15px;
 }
+
+textarea {
+	margin-block: 0px;
+	border: 0px;
+	min-width: 50rem;
+	min-height: 250px;
+}
+
+p {
+	margin-block: 0px;
+	background-color: white;
+}
+
+.function-editor {
+	padding: 15px;
+	border-radius: 5px;
+	background-color: lightblue;
+}
+
+.function-editor-function {
+	gap: 0px;
+}
+
+.p-top {
+	padding: 10px;
+	font-weight: 500;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.p-bottom {
+	padding: 10px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.p-top > span {
+	color: blue;
+}

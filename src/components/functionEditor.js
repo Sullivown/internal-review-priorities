@@ -25,22 +25,27 @@ class FunctionEditor extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className='function-editor'>
 				<h2>{this.props.item.name}</h2>
-				<textarea
-					name='textArea'
-					value={this.state.textArea}
-					cols='100'
-					rows='10'
-					onChange={this.handleChange}
-				></textarea>
+				<div className='function-editor-function'>
+					<p className='p-top'>
+						function {this.props.item.name}(<span>value</span>){' '}
+						{`{`}
+					</p>
+					<textarea
+						name='textArea'
+						value={this.state.textArea}
+						onChange={this.handleChange}
+					></textarea>
+					<p className='p-bottom'>{`};`}</p>
+				</div>
+
 				<button
 					onClick={() => {
 						FunctionTemplates.update({
 							key: this.props.item.name,
 							value: this.state.textArea,
 						});
-						console.log(FunctionTemplates.templates);
 					}}
 				>
 					Save

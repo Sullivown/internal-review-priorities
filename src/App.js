@@ -21,28 +21,14 @@ class App extends React.Component {
 			rawData: null,
 			processedData: null,
 			functionMapping: {
-				id: { algorithm: `return value;`, weight: null },
-				title: { algorithm: `return value;`, weight: null },
-				writer: { algorithm: `return value;`, weight: null },
+				id: { algorithm: `copyValue`, weight: null },
+				title: { algorithm: `copyValue`, weight: null },
+				writer: { algorithm: `copyValue`, weight: null },
 				statusRef: {
-					algorithm: `let score = 0;
-				if (value === 'awaiting-final-proof') {
-					score = 10;
-				}
-				if (value === 'ready-for-internal-review') {
-					score = 5;
-				}
-				if (value === 'ready-to-go-live') {
-					score = 1;
-				}
-				if (value === 'started') {
-					score = 3;
-				}
-			
-				return score;`,
+					algorithm: `statusRef`,
 					weight: 2,
 				},
-				isSnapshot: { algorithm: `return value;`, weight: 1 },
+				isSnapshot: { algorithm: `copyValue`, weight: 1 },
 				totalWeight: 3,
 			},
 			sort: {
