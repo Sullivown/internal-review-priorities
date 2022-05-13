@@ -18,9 +18,7 @@ const FunctionMappingFactory = (categories) => {
 
 		// Create function mappings
 		const funcMapObj = categories.reduce((obj, item) => {
-			console.log(item);
 			if (item in templates) {
-				console.log('in here');
 				obj[item] = {
 					algorithm: item,
 					weight: parseFloat((1 / categoriesToWeight).toFixed(2)),

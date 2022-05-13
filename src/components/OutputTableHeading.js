@@ -8,8 +8,17 @@ class OutputTableHeading extends React.Component {
 	render() {
 		return (
 			<th>
-				<div>{this.props.item}</div>
-				{this.props.item !== 'title' && this.props.item !== 'writer' ? (
+				<div
+					onClick={() => {
+						this.props.handleChange('sort', {
+							metric: this.props.item,
+							desc: true,
+						});
+					}}
+				>
+					{this.props.item}
+				</div>
+				{this.props.item !== 'title' ? (
 					<div className='table-header-div'>
 						<hr />
 						<OutputInputField

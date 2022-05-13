@@ -21,6 +21,7 @@ class OutputView extends React.Component {
 				<OutputTableHeading
 					key={uniqid()}
 					item={item}
+					handleChange={this.props.handleChange}
 					functionMapping={this.props.functionMapping}
 					updateFunctionMapping={this.props.updateFunctionMapping}
 				/>

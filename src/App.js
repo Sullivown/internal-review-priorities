@@ -51,6 +51,10 @@ class App extends React.Component {
 			this.setState({ functionMapping: funcMap.functionMap });
 		}
 
+		if (this.state.sort !== prevState.sort) {
+			this.sortData();
+		}
+
 		LocalStorage.update({
 			fileName: this.state.fileName,
 			rawData: this.state.rawData,
@@ -105,7 +109,7 @@ class App extends React.Component {
 			this.state.sort.metric,
 			this.state.sort.desc
 		);
-		this.setState({ sortedData: sorted });
+		this.setState({ processedData: sorted });
 	};
 
 	render() {

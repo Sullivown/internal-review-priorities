@@ -42,6 +42,7 @@ class Main extends React.Component {
 						output: (
 							<OutputView
 								data={processedData}
+								handleChange={handleChange}
 								functionMapping={functionMapping}
 								updateFunctionMapping={updateFunctionMapping}
 								sortData={sortData}

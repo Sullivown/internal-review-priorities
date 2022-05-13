@@ -26,7 +26,6 @@ function calculateScores(data, mappings) {
 				metricFunction =
 					templates[mappings[currentCol].algorithm] || null;
 			}
-
 			let output;
 			if (metricFunction) {
 				const func = convertToFunction(metricFunction);
@@ -55,7 +54,7 @@ function calculateScores(data, mappings) {
 		processedData.push(temp);
 	}
 
-	const sortedData = sortArray(processedData);
+	const sortedData = sortArray(processedData, 'total', true);
 
 	return sortedData;
 }
