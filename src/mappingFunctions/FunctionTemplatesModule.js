@@ -2,7 +2,7 @@ import convertFromFunction from '../helpers/convertFromFunction';
 import copyValue from './copyValue';
 import statusRef from './statusRef';
 
-const FunctionTemplates = (() => {
+const FunctionTemplatesModule = (() => {
 	const templates = {
 		copyValue: convertFromFunction(copyValue),
 		statusRef: convertFromFunction(statusRef),
@@ -18,4 +18,4 @@ const FunctionTemplates = (() => {
 	return { templates, update };
 })();
 
-export default FunctionTemplates;
+export default FunctionTemplatesModule;

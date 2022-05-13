@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import sortArray from './sortArray';
 import convertToFunction from './convertToFunction';
-import FunctionTemplates from '../mappingFunctions/functionTemplates';
+import FunctionTemplatesModule from '../mappingFunctions/FunctionTemplatesModule';
 
 function calculateScores(data, mappings) {
 	console.log('Calculating scores....');
@@ -14,7 +14,7 @@ function calculateScores(data, mappings) {
 
 	dataCopy.shift();
 
-	const templates = FunctionTemplates.templates;
+	const templates = FunctionTemplatesModule.templates;
 
 	for (let i = 0; i < dataCopy.length; i++) {
 		// Calculate score for individual rows

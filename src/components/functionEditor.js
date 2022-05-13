@@ -1,5 +1,5 @@
 import React from 'react';
-import FunctionTemplates from '../mappingFunctions/functionTemplates';
+import FunctionTemplates from '../mappingFunctions/FunctionTemplatesModule';
 
 class FunctionEditor extends React.Component {
 	constructor(props) {

@@ -2,7 +2,7 @@ import React from 'react';
 import uniqid from 'uniqid';
 
 import FunctionEditor from './functionEditor';
-import FunctionTemplates from '../mappingFunctions/functionTemplates';
+import FunctionTemplatesModule from '../mappingFunctions/FunctionTemplatesModule';
 
 import '../styles/Settings.css';
 
@@ -10,11 +10,11 @@ class Settings extends React.Component {
 	render() {
 		const funcArr = [];
 
-		for (let scoringFunction in FunctionTemplates.templates) {
+		for (let scoringFunction in FunctionTemplatesModule.templates) {
 			if (scoringFunction !== 'totalWeight') {
 				funcArr.push({
 					name: scoringFunction,
-					details: FunctionTemplates.templates[scoringFunction],
+					details: FunctionTemplatesModule.templates[scoringFunction],
 				});
 			}
 		}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LocalStorage from './helpers/localStorage';
+import FunctionMappingFactory from './factories/functionMappingFactory';
 
 import Header from './components/Header';
 import Main from './components/Main';
@@ -56,6 +57,9 @@ class App extends React.Component {
 
 		if (this.state.rawData !== prevState.rawData) {
 			this.setState({ fileName: this.state.fileName });
+			const funcMap = FunctionMappingFactory(this.state.rawData[0]);
+			console.log(funcMap);
+			this.setState({ functionMapping: funcMap });
 		}
 
 		LocalStorage.update({
@@ -96,7 +100,6 @@ class App extends React.Component {
 			},
 			() => {
 				const total = totalWeights(this.state.functionMapping);
-				console.log('total is ' + total);
 				this.setState({
 					functionMapping: {
 						...this.state.functionMapping,

@@ -1,10 +1,10 @@
 import React from 'react';
 import uniqid from 'uniqid';
-import FunctionTemplates from '../mappingFunctions/functionTemplates';
+import FunctionTemplatesModule from '../mappingFunctions/FunctionTemplatesModule';
 
 class AlgorithmSelector extends React.Component {
 	render() {
-		const algorithms = Object.keys(FunctionTemplates.templates);
+		const algorithms = Object.keys(FunctionTemplatesModule.templates);
 
 		const selectArray = algorithms.map((item) => {
 			return <option key={uniqid()}>{item}</option>;
