@@ -9,14 +9,26 @@ class OutputTableHeading extends React.Component {
 		return (
 			<th>
 				<div
+					className='heading-title'
 					onClick={() => {
 						this.props.handleChange('sort', {
 							metric: this.props.item,
-							desc: true,
+							desc: !this.props.sortStatus.desc,
 						});
 					}}
 				>
-					{this.props.item}
+					<span>{this.props.item}</span>{' '}
+					{this.props.sortStatus.metric === this.props.item ? (
+						<span>
+							<div
+								className={
+									this.props.sortStatus.desc
+										? 'arrow-down'
+										: 'arrow-up'
+								}
+							></div>
+						</span>
+					) : null}
 				</div>
 				{this.props.item !== 'title' ? (
 					<div className='table-header-div'>

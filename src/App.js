@@ -104,8 +104,12 @@ class App extends React.Component {
 	};
 
 	sortData = () => {
+		const array =
+			this.state.currentView === 'edit'
+				? this.state.rawData
+				: this.state.processedData;
 		const sorted = sortArray(
-			this.state.processedData,
+			array,
 			this.state.sort.metric,
 			this.state.sort.desc
 		);
@@ -128,6 +132,7 @@ class App extends React.Component {
 					updateProcessedData={this.updateProcessedData}
 					functionMapping={this.state.functionMapping}
 					updateFunctionMapping={this.updateFunctionMapping}
+					sortStatus={this.state.sort}
 					sortData={this.sortData}
 					fileName={this.state.fileName}
 				/>

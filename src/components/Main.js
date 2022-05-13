@@ -17,6 +17,7 @@ class Main extends React.Component {
 			updateProcessedData,
 			functionMapping,
 			updateFunctionMapping,
+			sortStatus,
 			sortData,
 			fileName,
 		} = this.props;
@@ -37,6 +38,8 @@ class Main extends React.Component {
 								updateRawData={handleChange}
 								handleChange={handleChange}
 								updateProcessedData={updateProcessedData}
+								sortStatus={sortStatus}
+								sortData={sortData}
 							/>
 						),
 						output: (
@@ -45,6 +48,7 @@ class Main extends React.Component {
 								handleChange={handleChange}
 								functionMapping={functionMapping}
 								updateFunctionMapping={updateFunctionMapping}
+								sortStatus={sortStatus}
 								sortData={sortData}
 							/>
 						),

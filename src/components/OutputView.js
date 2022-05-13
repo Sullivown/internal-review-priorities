@@ -24,6 +24,8 @@ class OutputView extends React.Component {
 					handleChange={this.props.handleChange}
 					functionMapping={this.props.functionMapping}
 					updateFunctionMapping={this.props.updateFunctionMapping}
+					sortData={this.props.sortData}
+					sortStatus={this.props.sortStatus}
 				/>
 			);
 		});
