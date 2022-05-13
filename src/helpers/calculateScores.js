@@ -4,7 +4,6 @@ import convertToFunction from './convertToFunction';
 import FunctionTemplatesModule from '../mappingFunctions/FunctionTemplatesModule';
 
 function calculateScores(data, mappings) {
-	console.log('Calculating scores....');
 	const dataCopy = _.cloneDeep(data);
 	const headings = [...dataCopy[0]];
 

@@ -23,6 +23,10 @@ class OutputTableHeading extends React.Component {
 						<AlgorithmSelector
 							key={uniqid()}
 							item={this.props.item}
+							functionMapping={this.props.functionMapping}
+							updateFunctionMapping={
+								this.props.updateFunctionMapping
+							}
 						/>
 					</div>
 				) : null}

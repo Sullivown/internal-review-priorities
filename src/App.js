@@ -21,17 +21,7 @@ class App extends React.Component {
 			fileName: null,
 			rawData: null,
 			processedData: null,
-			functionMapping: {
-				id: { algorithm: `copyValue`, weight: 0 },
-				title: { algorithm: `copyValue`, weight: 0 },
-				writer: { algorithm: `copyValue`, weight: 0 },
-				statusRef: {
-					algorithm: `statusRef`,
-					weight: 2,
-				},
-				isSnapshot: { algorithm: `copyValue`, weight: 1 },
-				totalWeight: 3,
-			},
+			functionMapping: {},
 			sort: {
 				metric: 'total',
 				desc: true,
@@ -58,8 +48,7 @@ class App extends React.Component {
 		if (this.state.rawData !== prevState.rawData) {
 			this.setState({ fileName: this.state.fileName });
 			const funcMap = FunctionMappingFactory(this.state.rawData[0]);
-			console.log(funcMap);
-			this.setState({ functionMapping: funcMap });
+			this.setState({ functionMapping: funcMap.functionMap });
 		}
 
 		LocalStorage.update({
