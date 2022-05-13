@@ -21,9 +21,9 @@ class App extends React.Component {
 			rawData: null,
 			processedData: null,
 			functionMapping: {
-				id: { algorithm: `copyValue`, weight: null },
-				title: { algorithm: `copyValue`, weight: null },
-				writer: { algorithm: `copyValue`, weight: null },
+				id: { algorithm: `copyValue`, weight: 0 },
+				title: { algorithm: `copyValue`, weight: 0 },
+				writer: { algorithm: `copyValue`, weight: 0 },
 				statusRef: {
 					algorithm: `statusRef`,
 					weight: 2,
@@ -96,6 +96,7 @@ class App extends React.Component {
 			},
 			() => {
 				const total = totalWeights(this.state.functionMapping);
+				console.log('total is ' + total);
 				this.setState({
 					functionMapping: {
 						...this.state.functionMapping,

@@ -1,10 +1,10 @@
 function totalWeights(functionMapping) {
-	console.log(functionMapping);
 	let total = 0;
 
 	for (const item in functionMapping) {
+		console.log(functionMapping[item]);
 		if (item !== 'totalWeight') {
-			total += functionMapping[item].weight;
+			total += parseFloat(functionMapping[item].weight);
 		}
 	}
 

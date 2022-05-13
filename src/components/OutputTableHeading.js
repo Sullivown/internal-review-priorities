@@ -2,6 +2,7 @@ import React from 'react';
 import uniqid from 'uniqid';
 
 import OutputInputField from './OutputInputField';
+import AlgorithmSelector from './AlgorithmSelector';
 
 class OutputTableHeading extends React.Component {
 	render() {
@@ -18,6 +19,10 @@ class OutputTableHeading extends React.Component {
 							updateFunctionMapping={
 								this.props.updateFunctionMapping
 							}
+						/>
+						<AlgorithmSelector
+							key={uniqid()}
+							item={this.props.item}
 						/>
 					</div>
 				) : null}

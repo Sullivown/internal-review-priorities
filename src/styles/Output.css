@@ -1,6 +1,11 @@
 .table-header-div {
 	display: inline;
 }
+.table-header-div div {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: block;
+}
 
 .table-header-div input {
 	width: 50px;

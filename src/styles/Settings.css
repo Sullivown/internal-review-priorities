@@ -11,11 +11,6 @@ textarea {
 	min-height: 250px;
 }
 
-p {
-	margin-block: 0px;
-	background-color: white;
-}
-
 .function-editor {
 	padding: 15px;
 	border-radius: 5px;
@@ -31,12 +26,16 @@ p {
 	font-weight: 500;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
+	margin-block: 0px;
+	background-color: white;
 }
 
 .p-bottom {
 	padding: 10px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+	margin-block: 0px;
+	background-color: white;
 }
 
 .p-top > span {

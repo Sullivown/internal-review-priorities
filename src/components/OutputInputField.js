@@ -5,7 +5,7 @@ class OutputInputField extends React.Component {
 		super(props);
 
 		this.state = {
-			weight: this.getWeight(),
+			weight: 0,
 		};
 	}
 
@@ -13,13 +13,16 @@ class OutputInputField extends React.Component {
 		const weight = this.props.functionMapping[this.props.item]
 			? this.props.functionMapping[this.props.item].weight
 			: 0;
-
 		return weight;
 	};
 
+	componentDidMount() {
+		this.setState({ weight: this.getWeight() });
+	}
+
 	render() {
 		return (
-			<React.Fragment>
+			<div>
 				<label htmlFor={'weight-' + this.props.item}>weight: </label>
 				{this.props.item === 'total' ? (
 					<div>{this.props.functionMapping.totalWeight}</div>
@@ -36,7 +39,7 @@ class OutputInputField extends React.Component {
 							this.props.updateFunctionMapping(
 								e.target.dataset.category,
 								e.target.dataset.field,
-								e.target.value
+								parseFloat(e.target.value)
 							);
 						}}
 						onKeyUp={(e) => {
@@ -44,13 +47,13 @@ class OutputInputField extends React.Component {
 								this.props.updateFunctionMapping(
 									e.target.dataset.category,
 									e.target.dataset.field,
-									e.target.value
+									parseFloat(e.target.value)
 								);
 							}
 						}}
 					/>
 				)}
-			</React.Fragment>
+			</div>
 		);
 	}
 }

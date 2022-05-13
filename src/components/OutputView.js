@@ -47,7 +47,7 @@ class OutputView extends React.Component {
 		});
 
 		return (
-			<div>
+			<div id='output-view'>
 				<h1>Output</h1>
 				<table>
 					<thead>
