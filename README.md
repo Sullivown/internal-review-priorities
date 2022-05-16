@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Internal Review Priorities
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Upload and process .csv files to rank the data in order of priority.
 
-## Available Scripts
+[View it live here.](https://sullivown.github.io/internal-review-priorities/])
 
-In the project directory, you can run:
+## How to use
 
-### `npm start`
+Upload a valid .csv file via the upload view, edit the uploaded data if needed, process the data and view the output in the output view.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## More Details
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Upload
 
-### `npm test`
+Upload a .csv file. If you have previously uploaded a file it should be saved in localStorage and be able to be edited/viewed via the Edit and Output views.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Edit
 
-### `npm run build`
+Edit the uploaded raw data here. If you have processed the data, changes will be reflected once the data has been re-processed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Output
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+View processed data, edit weights and assign algorithms. You can also print or save the data as .pdf by clicking the relevent button.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Settings
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+View and/or edit algorithms here. Each algorithm can be edited using JavaScript. Algorithms recieve <code>value</code> as a parameter and must return a <code>score</code> value.
