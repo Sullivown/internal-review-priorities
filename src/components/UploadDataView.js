@@ -59,7 +59,11 @@ class UploadDataView extends React.Component {
 					<h3 className='current'>Current File:</h3>
 					<p>{this.props.fileName || 'None.'}</p>
 					<h3>Upload a new file:</h3>
-					<form onSubmit={this.handleSubmit}>
+					<form
+						onSubmit={(e) => {
+							this.handleSubmit(e);
+						}}
+					>
 						<input
 							type='file'
 							id='file'
@@ -75,7 +79,7 @@ class UploadDataView extends React.Component {
 							<p>Upload successful!</p>
 							<button
 								type='button'
-								onClick={() =>
+								onClick={(e) =>
 									this.props.handleChange(
 										'currentView',
 										'edit'
