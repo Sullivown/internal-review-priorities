@@ -5,9 +5,8 @@
 .App {
 	display: grid;
 	height: 100vh;
-	width: 100vw;
 	max-width: 100vw;
-	gap: 20px;
+	grid-gap: 20px;
 	grid-template-rows: 100px auto 100px;
 	grid-template-areas:
 		'header'

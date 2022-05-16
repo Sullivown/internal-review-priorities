@@ -4,12 +4,6 @@ import uniqid from 'uniqid';
 import '../styles/EditData.css';
 
 class EditDataView extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = { processClicked: false };
-	}
-
 	handleChange = (e) => {
 		const row = e.target.dataset.row;
 		const col = e.target.dataset.col;
