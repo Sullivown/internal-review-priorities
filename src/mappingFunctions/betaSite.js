@@ -1,21 +1,23 @@
 function betaSite(value) {
 	let score = 0;
+	const v = parseInt(value);
 
-	if (value === 2) {
+	if (v === 2) {
 		score = 1;
 	}
-	if (value === 3) {
+	if (v === 3) {
 		score = 0.8;
 	}
-	if (value === 4) {
+	if (v === 4) {
 		score = 0.6;
 	}
-	if (value === 5) {
+	if (v === 5) {
 		score = 0.4;
 	}
-	if (value === 6) {
+	if (v === 6) {
 		score = 0.2;
 	}
+	console.log(value, score);
 
 	return score;
 }

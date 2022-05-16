@@ -5,7 +5,6 @@ function binaryInclusion(value) {
 		value.toLowerCase() === 'y' ||
 		parseInt(value) === 1
 	) {
-		console.log('ssss');
 		score = 1;
 	}
 
