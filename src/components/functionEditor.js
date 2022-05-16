@@ -13,8 +13,13 @@ class FunctionEditor extends React.Component {
 	}
 
 	componentDidMount() {
-		const content = this.props.item.details;
-		this.setState({ textArea: content });
+		const content = this.props.item.details.toString();
+		const funcString = content.toString();
+		const startIndex = funcString.indexOf('{');
+		const endIndex = funcString.lastIndexOf('}');
+
+		const funcContent = funcString.substring(startIndex + 1, endIndex);
+		this.setState({ textArea: funcContent });
 	}
 
 	handleChange = (e) => {
@@ -35,6 +40,7 @@ class FunctionEditor extends React.Component {
 					<textarea
 						name='textArea'
 						value={this.state.textArea}
+						readOnly={true}
 						onChange={this.handleChange}
 					></textarea>
 					<p className='p-bottom'>{`};`}</p>

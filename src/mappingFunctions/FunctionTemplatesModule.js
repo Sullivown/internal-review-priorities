@@ -6,10 +6,10 @@ import binaryInclusion from './binaryInclusion';
 
 const FunctionTemplatesModule = (() => {
 	const templates = {
-		copyValue: convertFromFunction(copyValue),
-		statusRef: convertFromFunction(statusRef),
-		binaryInclusion: convertFromFunction(binaryInclusion),
-		betaSite: convertFromFunction(betaSite),
+		copyValue: copyValue,
+		statusRef: statusRef,
+		binaryInclusion: binaryInclusion,
+		betaSite: betaSite,
 	};
 
 	const update = (data) => {

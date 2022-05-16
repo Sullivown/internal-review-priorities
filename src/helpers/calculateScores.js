@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import sortArray from './sortArray';
-import convertToFunction from './convertToFunction';
 import FunctionTemplatesModule from '../mappingFunctions/FunctionTemplatesModule';
 
 function calculateScores(data, mappings) {
@@ -28,7 +27,7 @@ function calculateScores(data, mappings) {
 			}
 			let output;
 			if (metricFunction) {
-				const func = convertToFunction(metricFunction);
+				const func = metricFunction;
 				output = func(dataCopy[i][j]);
 				if (output !== null && !isNaN(output)) {
 					output *= mappings[currentCol].weight;
