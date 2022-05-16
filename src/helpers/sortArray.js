@@ -1,4 +1,4 @@
-import _, { head } from 'lodash';
+import _ from 'lodash';
 
 function sortArray(array, metric, desc) {
 	let copy = _.cloneDeep(array);

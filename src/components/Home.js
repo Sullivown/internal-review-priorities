@@ -4,9 +4,6 @@ import '../styles/Home.css';
 
 class Home extends React.Component {
 	render() {
-		/// Current data (if any)
-		// if current data: Go to edit, go to output
-		// go to settings page to adjust algos
 		return (
 			<div id='home'>
 				<div className='info-div'>
@@ -15,9 +12,14 @@ class Home extends React.Component {
 					<div className='accent-div'>
 						<h2>Current data:</h2>
 						<p>
-							{this.props.fileName
-								? this.props.fileName
-								: 'No file found! Upload a new file in the Upload area'}
+							{this.props.fileName ? (
+								this.props.fileName
+							) : (
+								<div>
+									<p>No file found!</p>
+									<p>Upload a new file to get started.</p>
+								</div>
+							)}
 						</p>
 					</div>
 				</div>

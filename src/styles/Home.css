@@ -35,6 +35,7 @@
 	text-align: start;
 	background-color: lightblue;
 	justify-content: space-between;
+	align-items: center;
 	padding: 25px;
 	gap: 50px;
 	flex-direction: row;
