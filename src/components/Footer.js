@@ -3,7 +3,13 @@ import '../styles/Footer.css';
 
 class Footer extends React.Component {
 	render() {
-		return <footer>:D</footer>;
+		return (
+			<footer>
+				<a href='https://sullivown.github.io/internal-review-priorities/'>
+					View Help / Source code
+				</a>
+			</footer>
+		);
 	}
 }
 
