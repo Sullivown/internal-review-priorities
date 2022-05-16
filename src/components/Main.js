@@ -25,7 +25,12 @@ class Main extends React.Component {
 			<main>
 				{
 					{
-						home: <Home />,
+						home: (
+							<Home
+								fileName={fileName}
+								handleClick={handleChange}
+							/>
+						),
 						upload: (
 							<UploadDataView
 								handleChange={handleChange}
