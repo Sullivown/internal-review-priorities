@@ -29,7 +29,7 @@ class EditDataView extends React.Component {
 				<div>
 					<button
 						type='button'
-						onClick={() => {
+						onClick={(e) => {
 							this.props.updateProcessedData();
 							this.props.handleChange('currentView', 'output');
 						}}
