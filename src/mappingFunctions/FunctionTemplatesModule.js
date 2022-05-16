@@ -10,8 +10,6 @@ const FunctionTemplatesModule = (() => {
 		statusRef: convertFromFunction(statusRef),
 		binaryInclusion: convertFromFunction(binaryInclusion),
 		betaSite: convertFromFunction(betaSite),
-		custom1: '',
-		custom2: '',
 	};
 
 	const update = (data) => {

@@ -11,16 +11,15 @@ class Home extends React.Component {
 					<p>What would you like to prioritise today?</p>
 					<div className='accent-div'>
 						<h2>Current data:</h2>
-						<p>
-							{this.props.fileName ? (
-								this.props.fileName
-							) : (
-								<div>
-									<p>No file found!</p>
-									<p>Upload a new file to get started.</p>
-								</div>
-							)}
-						</p>
+
+						{this.props.fileName ? (
+							<p>{this.props.fileName}</p>
+						) : (
+							<div>
+								<p>No file found!</p>
+								<p>Upload a new file to get started.</p>
+							</div>
+						)}
 					</div>
 				</div>
 
