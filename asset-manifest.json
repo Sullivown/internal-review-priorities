@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/internal-review-priorities/static/css/main.f80048cc.css",
+    "main.js": "/internal-review-priorities/static/js/main.9a610311.js",
+    "index.html": "/internal-review-priorities/index.html",
+    "main.f80048cc.css.map": "/internal-review-priorities/static/css/main.f80048cc.css.map",
+    "main.9a610311.js.map": "/internal-review-priorities/static/js/main.9a610311.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f80048cc.css",
+    "static/js/main.9a610311.js"
+  ]
+}
