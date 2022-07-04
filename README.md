@@ -2,7 +2,7 @@
 
 Upload and process .csv files to rank the data in order of priority.
 
-[View it live here.](https://sullivown.github.io/internal-review-priorities/])
+[View it live here.](https://sullivown.github.io/internal-review-priorities/)
 
 ## How to use
 
